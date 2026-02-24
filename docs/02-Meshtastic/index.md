@@ -1,13 +1,35 @@
 ---
 sidebar_label: Meshtastic
 ---
-# What is it?
-Meshtastic is one of the easiest meshes to implement. If you have people using it around you, install the app, pair with a node, set your name and region, go!
+## _"What is Meshtastic?"_
+Meshtastic is an off-grid, decentralized mesh network built to run on low-power devices. It uses no cell towers or Wi-Fi routers, so it's not beholden to or at the mercy of corporations or governments, making it resistant to censorship campaigns, resilient to the ever more common outages of servers (like Amazon Web Services) or ISPs (like Spectrum), and totally subscription-free!
+
+## _"What is a 'mesh network'?"_
+Let's get visual!
+
+The current 'hub and spoke' model is a network which resembles a bike wheel. At the center there is a 'hub' (or 'server') and 'spokes' (or 'clients') branching off around it in a circle. This model requires the 'spokes' to first communicate with the 'hub' to connect with another 'client'. This is how the current Web works and means the 'hub' (server) has the power to decide every connection.
+
+A mesh network, by contrast, is one which there is no 'hub' meaning every 'spoke' (or, in our case, 'node') can freely communicate with every other one, with no one making decisions for anyone else. Unlike the situation where the hub goes down and everything goes down with it—like Amazon Web Services (AWS) knocking Netflix out or Spectrum cutting you off from your Signal / Delta Chat group chats—a mesh network is also _self-healing_, meaning if a node goes down or moves, the network dynamically adapts to ensure communications continue. This is what makes it resilient (and the ideal network style) in situations like natural disasters when cell towers fail.
+
+## _"What is a node?"_
+In abstract network terms, a node is an entity that can receive and transmit traffic. We can think about it sort of like a subway station with trains passing in and out (though, it's more like malleable slime mold than a fixed subway station, but you get it)!
+
+In practical terms, it's the physical device known as a [transceiver] that provides the radio hardware to connect your smartphone to the other people on the network.
+
+Some nodes even sport screens and keyboards so they can operate independently of your smart phone. Others hang out on towers to help connect distant nodes.
+
+## _"How do I get started?"_
+Meshtastic is one of the most straighforward mesh networks to implement. Designed around ease-of-use and simplicity, Meshtastic gets you up and running with little effort—install an app, pair a node, configure settings, and go! People nearby are most likely already using it, meaning you can join them in minutes!
+
+Nodes (the transceivers we talked about earlier) can be purchased pre-configured with the necessary firmware (the instructions for how to link up lives) and the app can be installed on your smart phone via Google's Play Store or Apple's App Store (though, it's recommended to download the app anonymously from [F-Droid](https://f-droid.org/) or [Aurora Store](https://f-droid.org/en/packages/com.aurora.store/) instead to keep Google from snooping on you).
+
+
 ## What nodes should I get?
 That's a big question in a short sentence. What is your use case? I'll list a few out. I am mainly listing OTS solutions, there are tons of builds out there, these are just the easiest. 
-- EDC or Every Day Carry: I like the [T1000-e](https://www.amazon.com/SenseCAP-Card-Tracker-T1000-Meshtastic/dp/B0DJ6KGXKB) for EDC. It's small, tough, light, and can run for a couple days between charges if you turn off the GPS. As of writing it only works on Meshtastic and Meshcore. The [Heltec V4](https://www.amazon.com/Heltec-Battery-2-Pack-3000mAh-Antenna/dp/B0FY2WL3MN/) is another solid choice, It works on all 3 major meshes, though it uses more battery. It can easily be setup as a permanant MQTT gateway by connecting it to your home wifi.
-- Car node: This is one that you attach outside of your car. If you have access to a 3d printer, you can build [something like this](https://www.printables.com/model/994724-low-profile-solar-meshtastic-car-node) using a [RAK Wisblock meshtastic starter kit](https://www.amazon.com/RAKwireless-WisBlock-Meshtastic-Starter-RAK19007/dp/B0CHKZJK9C/) a battery and solar panel listed on the build page. If you dont have a 3d printer, you can get a [Seed Solar P1](https://www.amazon.com/SenseCAP-Solar-Node-P1-Pro-Communication/dp/B0FMDHBWX8/) and [some magnets](https://www.amazon.com/dp/B0CW64GTG3?) to mount on the roof of you car.
-- Solar node for static installations: The [Seed Solar P1](https://www.amazon.com/SenseCAP-Solar-Node-P1-Pro-Communication/dp/B0FMDHBWX8/) is a solid setup, especially if you pair it with a [telescoping flag pole](https://www.amazon.com/VEVOR-30FT-Telescoping-Kit-Flagpole/dp/B0D8P7GT9Q/?). There are a few of these in GR zip tied to top floor apartment balconies. 
+- EDC or Every Day Carry: I like the [T1000-e]() for EDC. It's small, tough, light, and can run for a couple days between charges if you turn off the GPS. As of writing it only works on Meshtastic and Meshcore. The [Heltec V4]() is another solid choice, It works on all 3 major meshes, though it uses more battery. It can easily be setup as a permanant MQTT gateway by connecting it to your home wifi.
+- Car node: This is one that you attach outside of your car. If you have access to a 3d printer, you can build [something like this](https://www.printables.com/model/994724-low-profile-solar-meshtastic-car-node) using a [RAK Wisblock meshtastic starter kit]() a battery and solar panel listed on the build page. If you dont have a 3d printer, you can get a [Seed Solar P1]() and [some magnets]() to mount on the roof of you car.
+- Solar node for static installations: The [Seed Solar P1]() is a solid setup, especially if you pair it with a [telescoping flag pole](). There are a few of these in GR zip tied to top floor apartment balconies. 
+
 ## What is the topology like?
 The meshtastic flood routing algo will hear a message, if it still has hops left it will wait for X*random amount of time, subtract 1 from the hop count, retransmit the message if it is not one of the `_Mute` roles. X is a constant that is different for most roles. Infrastucture nodes have a lower X, client nodes have a higher X.
 ### But I thought meshtastic used directed routing?
